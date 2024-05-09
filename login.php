@@ -56,7 +56,7 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width,
     initial-scale=1.0">
     <Title>login form</Title>
-    <link rel="stylesheet" href="login_style.css">
+    <link rel="stylesheet" href="css/login_style.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </head>
 
