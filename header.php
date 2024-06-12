@@ -24,14 +24,18 @@ include_once "includes/config.php";
     <link href="./css/boot_style.css" rel="stylesheet">
     <link href="./css/carousel.css" rel="stylesheet">
     <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Knewave" />
+
 
 
 </head>
 <body>
 
 <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="./assets/dist/js/jquery.min.js"></script>
-    <script src="./js/my_script.js"></script>
+<script src="./assets/dist/js/jquery.min.js"></script>
+<script src="./js/my_script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 
 <?php
 if(isset($_SESSION['loggedin'])) {

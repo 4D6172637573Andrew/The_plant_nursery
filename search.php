@@ -1,3 +1,56 @@
+<head>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    color: #b30000;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-result {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 15px;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.search-result h3 {
+    color: #b30000;
+    font-size: 1.5em;
+}
+
+.search-result a {
+    text-decoration: none;
+    color: #333;
+}
+
+.search-result a:hover {
+    text-decoration: underline;
+}
+
+.search-result article {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .search-result {
+        width: 90%;
+    }
+}
+
+    </style>
+</head>
+
 <?php
 include_once("header.php");
 $conn = mysqli_connect(HOST, DBUSER, DBPASS, DBNAME);
@@ -14,7 +67,7 @@ if ($conn->connect_error) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css">
 </head>
-<body>
+<body><br><br>
 <!-- <div class="search-box">
     <form action="search.php" method="get">
         <input type="text" name="search" maxlength="60" placeholder="Search..." required>

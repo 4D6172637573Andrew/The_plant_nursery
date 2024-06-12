@@ -1,8 +1,8 @@
 <?php
 include_once "header.php";
-// include_once "parallax.php";
+include_once "carousel.php";
 ?>
-<br><br>
+
 <style>
 body {
     display: flex;
@@ -14,62 +14,29 @@ body {
     background-position: center;
 }
  </style> 
-<div class="title">
-  <h1>online plant purchasing made easy</h1>
-  <h5>Purchase plants and explore extensive and complete care guides</h5>
-  <br><br><br><br><br><br>
-</div>
-
-<hr class="featurette-divider">
-<div class="row">
-  <div class="col-lg-3">
-  <div class="card" style="width: 15rem;">
-  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-  <title>Placeholder</title>
-  <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-  <image href="assets/img/plant_all.jpg" width="100%" height="100%" />
-</svg>  
-<div class="card-body">
-   <a href="plant_page.php" class="btn btn-outline">SHOP ALL</a>
-  </div>
-</div>
-  </div><!-- /.col-lg-4 -->
-  <div class="col-lg-3">
-  <div class="card" style="width: 15rem;">
-  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-  <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-  <image href="assets/img/Indoor_plants.jpg" width="100%" height="100%" />
-</svg>  
-<div class="card-body">
-    <a href="plant_page.php" class="btn btn-outline">INDOOR PLANTS</a>
-  </div>
-</div>
-  </div><!-- /.col-lg-4 -->
-
-  <div class="col-lg-3">
-  <div class="card" style="width: 15rem;">
-  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">  <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-  <image href="assets/img/Outdoor_plants.jpg" width="100%" height="100%" />
-</svg>    
-<div class="card-body">
-    <a href="plant_page.php" class="btn btn-outline">OUTDOOR PLANTS</a>
-  </div>
-</div>
-  </div><!-- /.col-lg-4 -->
-  <div class="row">
-  <div class="col-lg-3">
-  <div class="card" style="width: 15rem;">
-  <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
-  <title>Placeholder</title>
-  <rect width="100%" height="100%" fill="var(--bs-secondary-bg)" />
-  <image href="assets/img/plant_all.jpg" width="100%" height="100%" />
-</svg>  
-<div class="card-body">
-   <a href="plant_page.php" class="btn btn-outline">SHOP ALL</a>
-  </div>
-</div>
-  </div><!-- /.col-lg-4 -->
-</div><!-- /.row -->
+<!-- <hr class="featurette-divider"> -->
+<div class="container">
+        <div class="header">
+        <hr class="featurette-divider">
+        </div>
+        <div class="categories filters filters-container">
+            <div class="category" href="all_plants.php" data-category="all">
+                <img src="assets/img/plant_all.jpg" alt="Shop All">
+                <span>SHOP ALL</span>
+            </div>
+            <div class="category" onclick="setCategory('indoor')" data-category="indoor">
+                <img src="assets/img/Indoor_plants.jpg" alt="Indoor Plants">
+                <span>INDOOR PLANTS</span>
+            </div>
+            <div class="category" onclick="setCategory('outdoor')" data-category="outdoor">
+                <img src="assets/img/Outdoor_plants.jpg" alt="Outdoor Plants">
+                <span>OUTDOOR PLANTS</span>
+            </div>
+            <div class="category" onclick="setCategory('pots')" data-category="pots">
+                <img src="assets/img/plant_accessories.jpg" alt="Pots & Accessories">
+                <span>POTS - ACCESSORIES</span>
+            </div>
+        </div>
 
 <hr class="featurette-divider">
 

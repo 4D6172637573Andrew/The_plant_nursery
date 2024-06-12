@@ -7,15 +7,31 @@ $(document).on('click', '.row_delete', function (event) {
       method: "POST",
       data: { id: rowId },
       success: function (response) {
-          location.reload()
+          location.reload();
           console.log("Server response: " + response);
       },
       error: function (xhr, status, error) {
           console.log("AJAX error: " + error);
       }
-
   });
 });
+
+function setCategory(category) {
+  document.getElementById('category').value = category;
+  const categories = document.querySelectorAll('.category');
+  categories.forEach(cat => {
+      if (cat.getAttribute('data-category') === category) {
+          cat.classList.remove('darkened');
+      } else {
+          cat.classList.add('darkened');
+      }
+  });
+}
+
+// Initialize the darkening effect on page load
+window.onload = function() {
+  setCategory(document.getElementById('category').value);
+}
 
 
 

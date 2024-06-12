@@ -7,9 +7,5 @@
       </footer>
     </main>
 
-    <script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="./assets/dist/js/jquery.min.js"></script>
-    <script src="./js/my_script.js"></script>
-
   </body>
 </html>

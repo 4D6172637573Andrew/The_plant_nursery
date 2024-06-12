@@ -1,9 +1,8 @@
 <?php
-require "includes/config.php";
+require "includes/config.php"; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $rowId = $_POST['id'];
-
 
     $conn = new mysqli(HOST, DBUSER, DBPASS, DBNAME);
 
@@ -12,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     }
 
     $sql = "DELETE FROM cart WHERE id = ?";
-
 
     $stmt = $conn->prepare($sql);
 
