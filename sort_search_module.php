@@ -24,24 +24,21 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="path/to/your/header-image.png" alt="Plant Shop Header">
-        </div><br><br>
+    <div class="container"><br><br>
         <div class="categories filters filters-container">
-            <div class="category" onclick="setCategory('all')" data-category="all">
+            <div class="category" onclick="selectCategory('all')" data-category="all">
                 <img src="assets/img/plant_all.jpg" alt="Shop All">
                 <span>SHOP ALL</span>
             </div>
-            <div class="category" onclick="setCategory('indoor')" data-category="indoor">
+            <div class="category" onclick="selectCategory('indoor')" data-category="indoor">
                 <img src="assets/img/Indoor_plants.jpg" alt="Indoor Plants">
                 <span>INDOOR PLANTS</span>
             </div>
-            <div class="category" onclick="setCategory('outdoor')" data-category="outdoor">
+            <div class="category" onclick="selectCategory('outdoor')" data-category="outdoor">
                 <img src="assets/img/Outdoor_plants.jpg" alt="Outdoor Plants">
                 <span>OUTDOOR PLANTS</span>
             </div>
-            <div class="category" onclick="setCategory('pots')" data-category="pots">
+            <div class="category" onclick="selectCategory('pots')" data-category="pots">
                 <img src="assets/img/plant_accessories.jpg" alt="Pots & Accessories">
                 <span>POTS - ACCESSORIES</span>
             </div>
@@ -60,16 +57,20 @@
                 <label for="plant-family">Plant Family</label>
                 <select id="plant-family">
                     <option value="all">All</option>
-                    <option value="cacti">Cacti</option>
-                    <option value="shrub">Shrub</option>
-                    <option value="tree">Tree</option>
+                    <option value="herbs">Herbs</option>
+                    <option value="shrub">Shrubs</option>
+                    <option value="tree">Trees</option>
+                    <option value="climber">Climbers</option>
+                    <option value="creeper">Creepers</option>
                 </select>
             </div>
             <div>
                 <label for="pot-size">Pot Size</label>
                 <select id="pot-size">
                     <option value="all">All</option>
-                    <!-- Add more pot sizes as needed -->
+                    <option value="all">70</option>
+                    <option value="all">80</option>
+                    <option value="all">125</option>
                 </select>
             </div>
             <div>
@@ -88,5 +89,40 @@
             </div>
         </div>
     </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var categoryDropdown = document.getElementById('category');
+        var urlParams = new URLSearchParams(window.location.search);
+        var category = urlParams.get('category') || 'all';
+
+        // Set the initial category based on URL parameter
+        categoryDropdown.value = category;
+        highlightCategoryTile(category);
+
+        categoryDropdown.addEventListener('change', function() {
+            var selectedCategory = categoryDropdown.value;
+            window.location.href = 'all_plants.php?category=' + selectedCategory;
+        });
+    });
+
+    function selectCategory(category) {
+        var categoryDropdown = document.getElementById('category');
+        categoryDropdown.value = category;
+        highlightCategoryTile(category);
+        window.location.href = 'all_plants.php?category=' + category;
+    }
+
+    function highlightCategoryTile(category) {
+        var categories = document.querySelectorAll('.category');
+        categories.forEach(function(cat) {
+            if (cat.getAttribute('data-category') === category) {
+                cat.classList.remove('darkened');
+            } else {
+                cat.classList.add('darkened');
+            }
+        });
+    }
+    </script>
 </body>
 </html>

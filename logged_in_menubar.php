@@ -19,9 +19,8 @@
                             Plants
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="plantsDropdown">
-                            <li><a href="all_plants.php" class="dropdown-item">All Plants</a></li>
-                            <li><a href="Dark_light_mode.php" class="dropdown-item">Indoor Plants</a></li>
-                            <li><a href="Dark_light_mode.php" class="dropdown-item">Outdoor Plants</a></li>
+                            <li><a href="all_plants.php" class="dropdown-item">SHOP</a></li>
+                            <li><a href="care.php" class="dropdown-item">Care guides</a></li>
                         </ul>
                     </li>
                 </ul>

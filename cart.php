@@ -5,9 +5,23 @@ $conn = mysqli_connect(HOST, DBUSER, DBPASS, DBNAME);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
+
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
     <style>
         th {
             background-color: #95A5A6;
@@ -31,7 +45,7 @@ if ($conn->connect_error) {
 
 <body>
 <div class="col-lg-10 table-body container"><br>
-    <h1>cart:</h1>
+    <h1>Cart:</h1>
     <table class="styled-table style" style="width: 100%;">
         <thead class="thead-dark">
         <tr class="active-row">
@@ -44,8 +58,11 @@ if ($conn->connect_error) {
         </thead>
         <tbody>
         <?php
-        $query = "SELECT * FROM cart WHERE user_id = 1"; 
-        $result = mysqli_query($conn, $query); 
+        $query = "SELECT * FROM cart WHERE user_id = ?"; 
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "i", $user_id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
         $total_final = 0; 
 
@@ -66,6 +83,8 @@ if ($conn->connect_error) {
                 </tr>
             ';
         }
+
+        mysqli_stmt_close($stmt);
         ?>
         <tr>
             <td colspan="3" style="text-align:left;"><b>Total Final:</b></td>
@@ -75,3 +94,4 @@ if ($conn->connect_error) {
     </table>
 </div>
 </body>
+</html>
