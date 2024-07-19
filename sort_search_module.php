@@ -10,7 +10,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* background-image: linear-gradient(to bottom right, #000428  , #004e92); */
         }
         .container {
             text-align: center;
@@ -20,7 +19,18 @@
             width: 50%;
             height: auto;
         }
-
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+            display: none;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -54,29 +64,18 @@
                 </select>
             </div>
             <div>
-                <label for="plant-family">Plant Family</label>
-                <select id="plant-family">
-                    <option value="all">All</option>
-                    <option value="herbs">Herbs</option>
-                    <option value="shrub">Shrubs</option>
-                    <option value="tree">Trees</option>
-                    <option value="climber">Climbers</option>
-                    <option value="creeper">Creepers</option>
-                </select>
-            </div>
-            <div>
                 <label for="pot-size">Pot Size</label>
                 <select id="pot-size">
                     <option value="all">All</option>
-                    <option value="all">70</option>
-                    <option value="all">80</option>
-                    <option value="all">125</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                    <option value="125">125</option>
                 </select>
             </div>
             <div>
                 <label for="sort-by">Sort By</label>
                 <select id="sort-by">
-                    <option value="default">Default</option>
+                    <option value="default">Featured</option>
                     <option value="low_high">Price Low to High</option>
                     <option value="high_low">Price High to Low</option>
                     <option value="a_z">Alphabetical Ascending</option>
@@ -93,24 +92,42 @@
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         var categoryDropdown = document.getElementById('category');
+        var sizeDropdown = document.getElementById('pot-size');
+        var sortByDropdown = document.getElementById('sort-by');
         var urlParams = new URLSearchParams(window.location.search);
         var category = urlParams.get('category') || 'all';
+        var size = urlParams.get('size') || 'all';
+        var sortBy = urlParams.get('sort_by') || 'default';
 
-        // Set the initial category based on URL parameter
         categoryDropdown.value = category;
-        highlightCategoryTile(category);
+        sizeDropdown.value = size;
+        sortByDropdown.value = sortBy;
 
         categoryDropdown.addEventListener('change', function() {
-            var selectedCategory = categoryDropdown.value;
-            window.location.href = 'all_plants.php?category=' + selectedCategory;
+            applyFilters();
         });
+
+        sizeDropdown.addEventListener('change', function() {
+            applyFilters();
+        });
+
+        sortByDropdown.addEventListener('change', function() {
+            applyFilters();
+        });
+
+        function applyFilters() {
+            var selectedCategory = categoryDropdown.value;
+            var selectedSize = sizeDropdown.value;
+            var selectedSortBy = sortByDropdown.value;
+            window.location.href = 'all_plants.php?category=' + selectedCategory + '&size=' + selectedSize + '&sort_by=' + selectedSortBy;
+        }
     });
 
     function selectCategory(category) {
         var categoryDropdown = document.getElementById('category');
         categoryDropdown.value = category;
         highlightCategoryTile(category);
-        window.location.href = 'all_plants.php?category=' + category;
+        applyFilters();
     }
 
     function highlightCategoryTile(category) {

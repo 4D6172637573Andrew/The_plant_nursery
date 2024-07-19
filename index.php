@@ -4,15 +4,6 @@ include_once "carousel.php";
 ?>
 
 <style>
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: url(assets/img/) no-repeat;
-    background-size: cover;
-    background-position: center;
-}
  </style> 
 <!-- <hr class="featurette-divider"> -->
 <div class="container">
