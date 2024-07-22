@@ -113,7 +113,7 @@ while ($row = mysqli_fetch_assoc($result)) {
             <?php else: ?>
                 <?php foreach ($products as $product): ?>
                     <div class="product-card">
-                        <a href="plant_page.php?plant_id=<?php echo $product['id']; ?>" title="like" class="plant_like" style="color: black; font-size:20px;">
+                        <a href="plant_page.php?plant_id=<?php echo $product['id']; ?>" title="yes  " class="plant_like" style="color: black; font-size:20px;">
                             <img src="<?php echo $product['image']; ?>" alt="<?php echo $product['name']; ?>">
                         </a>
                         <h6 class="product_name"><?php echo $product['name']; ?></h6>

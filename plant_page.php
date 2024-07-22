@@ -1,14 +1,14 @@
 <?php
-// session_start(); 
 include_once("header.php");
-include_once("modals.php");
 
-$plant_id = $_GET['id'] ?? null; // Get the plant ID from URL parameter
+$plant_id = $_GET['plant_id'] ?? null; // Correctly retrieve the plant_id
 
 if ($plant_id === null) {
     echo "Invalid plant ID.";
     exit;
 }
+
+echo "Plant ID: " . htmlspecialchars($plant_id);
 
 $conn = mysqli_connect(HOST, DBUSER, DBPASS, DBNAME);
 if ($conn->connect_error) {
@@ -16,6 +16,7 @@ if ($conn->connect_error) {
 }
 
 $query = "SELECT * FROM plant WHERE id='$plant_id'";
+echo "Query: " . $query;
 $result = mysqli_query($conn, $query);
 
 if (!$result || mysqli_num_rows($result) === 0) {
@@ -24,13 +25,14 @@ if (!$result || mysqli_num_rows($result) === 0) {
 }
 
 $plant = mysqli_fetch_assoc($result);
+print_r($plant); // Debugging line to check the retrieved data
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><br><br><br>
     <title><?php echo $plant['plant_name']; ?> - Plant Details</title>
     <style>
         body {
@@ -110,7 +112,7 @@ $plant = mysqli_fetch_assoc($result);
         }
     </style>
 </head>
-<body><br><br><br><br>
+<body>
     <div class="container">
         <div class="plant-image">
             <img src="<?php echo $plant['img_path']; ?>" alt="<?php echo $plant['plant_name']; ?>">
@@ -119,10 +121,10 @@ $plant = mysqli_fetch_assoc($result);
             <h1><?php echo $plant['plant_name']; ?></h1>
             <h2><?php echo $plant['size'] . "MM"; ?></h2>
             <div class="price"><?php echo "$" . $plant['price']; ?></div>
-            <p><?php echo $plant['description'] ?></p>
+            <p><?php echo $plant['description']; ?></p>
             <div class="quantity">
                 <label for="quantity">Select Quantity:</label>
-                <input type="hidden" class="product_quantity" type="number" name="quantity" value="1" min="1">
+                <input type="number" name="quantity" value="1" min="1">
             </div>
             <div class="add-to-cart">
                 <form method="POST" action="cart_add.php">
@@ -133,21 +135,10 @@ $plant = mysqli_fetch_assoc($result);
                     <button type="submit" class="btn">ADD TO CART</button>
                 </form>
             </div>
-            <!-- <div class="additional-info">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#info_modal">Plant information</button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#care_modal">Care Guide</button>
-            </div> -->
         </div>
     </div>
-
-
-
-    <script>
-        document.getElementById('quantity').addEventListener('change', function() {
-            document.getElementById('hidden-quantity').value = this.value;
-        });
-
-        
-    </script>
 </body>
 </html>
+
+    
+
